@@ -26,9 +26,9 @@ Guess the hidden **5-letter Georgian word** in **6 attempts**. Every guess gives
 
 ## 🖼️ Preview
 
-![Screenshot](screenshot-1.png)
+![Screenshot](Screenshot-1.png)
 
-![Screenshot](screenshot-2.png)
+![Screenshot](Screenshot-2.png)
 
 ---
 
