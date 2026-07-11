@@ -97,7 +97,7 @@ Simply clone the repository and open it using a local web server.
 Example:
 
 ```bash
-git clone https://github.com/yourusername/georgian-wordle.git
+git clone https://github.com/Lukaofficial/georgian-wordle.git
 ```
 
 Then open `index.html` using a local server such as:
