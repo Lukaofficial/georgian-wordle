@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ქართული ვორდლი</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+<body>
+
+  <h1>ქართული ვორდლი</h1>
+
+  <!-- Revealed answer + hint text, shown/hidden via script.js -->
+  <div id="ansv"></div>
+  <div id="hint">
+    მინიშნება
+  </div>
+
+  <!-- 6x5 guess grid: each row is one attempt, each cell one letter.
+       IDs follow the pattern dRC (Row, Column), e.g. d34 = row 3, col 4. -->
+  <table>
+    <tr>
+      <td id="d11"></td>
+      <td id="d12"></td>
+      <td id="d13"></td>
+      <td id="d14"></td>
+      <td id="d15"></td>
+    </tr>
+    <tr>
+      <td id="d21"></td>
+      <td id="d22"></td>
+      <td id="d23"></td>
+      <td id="d24"></td>
+      <td id="d25"></td>
+    </tr>
+    <tr>
+      <td id="d31"></td>
+      <td id="d32"></td>
+      <td id="d33"></td>
+      <td id="d34"></td>
+      <td id="d35"></td>
+    </tr>
+    <tr>
+      <td id="d41"></td>
+      <td id="d42"></td>
+      <td id="d43"></td>
+      <td id="d44"></td>
+      <td id="d45"></td>
+    </tr>
+    <tr>
+      <td id="d51"></td>
+      <td id="d52"></td>
+      <td id="d53"></td>
+      <td id="d54"></td>
+      <td id="d55"></td>
+    </tr>
+    <tr>
+      <td id="d61"></td>
+      <td id="d62"></td>
+      <td id="d63"></td>
+      <td id="d64"></td>
+      <td id="d65"></td>
+    </tr>
+  </table>
+
+  <!-- On-screen Georgian keyboard. `data-key` matches KeyboardEvent.code so
+       script.js can highlight keys as they're pressed. Keys with an `id`
+       (kw, kr, kt, ks, kj, kz, kc) swap to their Shift-layer character
+       while Shift is held. -->
+  <div id="centerKeyboard">
+    <div class="row">
+      <div class="keyboard">
+        <div class="key-q" data-key="KeyQ">ქ</div>
+        <div class="key-w" data-key="KeyW" id="kw">წ</div>
+        <div class="key-e" data-key="KeyE">ე</div>
+        <div class="key-r" data-key="KeyR" id="kr">რ</div>
+        <div class="key-t" data-key="KeyT" id="kt">ტ</div>
+        <div class="key-y" data-key="KeyY">ყ</div>
+        <div class="key-u" data-key="KeyU">უ</div>
+        <div class="key-i" data-key="KeyI">ი</div>
+        <div class="key-o" data-key="KeyO">ო</div>
+        <div class="key-p" data-key="KeyP">პ</div>
+
+        <div class="key-a" data-key="KeyA">ა</div>
+        <div class="key-s" data-key="KeyS" id="ks">ს</div>
+        <div class="key-d" data-key="KeyD">დ</div>
+        <div class="key-f" data-key="KeyF">ფ</div>
+        <div class="key-g" data-key="KeyG">გ</div>
+        <div class="key-h" data-key="KeyH">ჰ</div>
+        <div class="key-j" data-key="KeyJ" id="kj">ჯ</div>
+        <div class="key-k" data-key="KeyK">კ</div>
+        <div class="key-l" data-key="KeyL">ლ</div>
+        <div class="key-enter" data-key="Enter">
+          Enter
+        </div>
+
+        <div class="key-z" data-key="KeyZ" id="kz">ზ</div>
+        <div class="key-x" data-key="KeyX">ხ</div>
+        <div class="key-c" data-key="KeyC" id="kc">ც</div>
+        <div class="key-v" data-key="KeyV">ვ</div>
+        <div class="key-b" data-key="KeyB">ბ</div>
+        <div class="key-n" data-key="KeyN">ნ</div>
+        <div class="key-m" data-key="KeyM">მ</div>
+        <div class="key-backspace" data-key="Backspace">
+          &larr;
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-screen warning shown when the user types in a non-Georgian layout -->
+  <div id="notInGeo">
+    <h1>გადართეთ ქართულ ენაზე</h1>
+  </div>
+
+  <!-- Warning shown when a submitted guess isn't in the word list -->
+  <div class="notlistholder">
+    <div id="notInWordsList">არ არის სიტყვების სიაში!</div>
+  </div>
+
+  <!-- End-of-round modal: shows the result and a bar graph of wins per
+       attempt (1-6), built from the localStorage "winsInX" counters. -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="scoreRow"></p>
+
+      <!-- Graph axes -->
+      <div id="oy"></div>
+      <div id="ox"></div>
+
+      <!-- Graph bars, one per attempt number -->
+      <div id="firstLine"></div>
+      <div id="secondLine"></div>
+      <div id="thirdLine"></div>
+      <div id="fourthLine"></div>
+      <div id="fifthLine"></div>
+      <div id="sixthLine"></div>
+
+      <!-- Bar labels (attempt numbers 1-6) -->
+      <span id="firstText">1</span>
+      <span id="secondText">2</span>
+      <span id="thirdText">3</span>
+      <span id="fourthText">4</span>
+      <span id="fifthText">5</span>
+      <span id="sixthText">6</span>
+
+      <button id="resetScore">ქულების გადატვირთვა</button>
+      <button id="newGame">თავიდან თამაში</button>
+    </div>
+  </div>
+
+  <script type="module" src="words.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

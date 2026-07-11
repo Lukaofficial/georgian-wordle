@@ -1,0 +1,523 @@
+/* =========================================================================
+   FONTS
+   ========================================================================= */
+@import "https://fonts.googleapis.com/css?family=Questrial:300,400,500,600,700";
+@import "https://fonts.googleapis.com/css?family=Merriweather:300,400,500,600,700";
+@import "https://fonts.googleapis.com/css?family=Rubik:300,400,500,700";
+
+/* =========================================================================
+   RESET
+   ========================================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================================================
+   TYPOGRAPHY
+   ========================================================================= */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 2.1rem;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+h4 {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+h5 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+h6 {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* Second h1 rule intentionally overrides the base h1 rule above for the
+   page title (adds top margin, muted color, lighter weight) */
+h1 {
+    text-align: center;
+    margin-top: 2rem;
+    font-weight: 400;
+    color: #555;
+}
+
+span {
+    text-align: center;
+    display: block;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* =========================================================================
+   ERROR REPORT WIDGET
+   (small feedback form: textarea + submit button + confirmation message)
+   ========================================================================= */
+#error-report {
+    position: absolute;
+    top: 43vh;
+    width: 20vw;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#error-report h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#errorInput {
+    width: 100%;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 14px;
+}
+
+#reportError {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#submitError:hover {
+    background-color: #0056b3;
+}
+
+#confirmationMessage {
+    margin-top: 10px;
+    color: green;
+    font-weight: bold;
+    display: none;
+}
+
+/* =========================================================================
+   GLOBAL BASE STYLES
+   ========================================================================= */
+html,
+body,
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.04em;
+    word-spacing: 0.2em;
+    text-decoration: none;
+    word-break: break-word;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    outline: 0;
+    overflow: hidden;
+}
+
+html,
+body {
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+/* =========================================================================
+   LAYOUT ROWS
+   ========================================================================= */
+.row,
+.row-first,
+.row-last {
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.row {
+    padding: 0.5em 1em;
+    margin-top: -160px;
+}
+
+.row-first {
+    padding: 1em 1em 0.5em 1em;
+}
+
+.row-last {
+    padding: 0.5em 1em 1em 1em;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* =========================================================================
+   GUESS GRID (the 6x5 table of letter cells)
+   ========================================================================= */
+tr,
+td {
+    border: 2px solid grey;
+}
+
+td {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-weight: 700;
+}
+
+table {
+    border-collapse: separate;
+    margin-top: 120px !important;
+    border-spacing: 9px;
+    margin: 8% auto;
+}
+
+/* =========================================================================
+   ON-SCREEN KEYBOARD
+   ========================================================================= */
+#centerKeyboard {
+    display: flex;
+    justify-content: center;
+    margin-top: -10vh;
+}
+
+.keyboard {
+    max-width: 670px;
+    width: 100%;
+    height: 20vh;
+    margin-top: 15vh;
+
+    padding: 1rem;
+    border-radius: 10px;
+
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    box-shadow: 0 0 0.5rem 0.1rem rgba(#000000, 0.3);
+
+    /* Individual key styling (each letter/Enter/Backspace tile) */
+    div {
+        color: #000000;
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        width: 9%;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 0.25rem rgba(#000000, 0.5);
+        border-radius: 5px;
+        background-color: #cac7c7;
+        align-items: flex-start;
+        justify-content: left;
+        padding: 0.4rem 0 0 0.4rem;
+        font-size: 0.9rem;
+        transition: background-color 100ms, transform 100ms;
+    }
+
+    .key-enter {
+        flex-direction: column;
+    }
+
+    .key-backspace {
+        grid-column: 14 / 15;
+    }
+
+    .key-enter {
+        grid-column: 13 / 15;
+    }
+}
+
+/* Extra left offset so the "ზ" key lines up under the row above */
+#kz {
+    margin-left: 3.2vw;
+}
+
+/* Highlight a key while its matching physical key is held down */
+.row .keyboard div.pressed {
+    background-color: #9a9595;
+}
+
+/* =========================================================================
+   OVERLAYS: revealed answer, hint, and validation warnings
+   ========================================================================= */
+#ansv {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    visibility: hidden;
+    position: absolute;
+    left: 48vw;
+    margin-top: 2vh;
+}
+
+#hint {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    visibility: hidden;
+    position: absolute;
+    cursor: pointer;
+    left: 15vw;
+    top: 48vh;
+}
+
+#notInWordsList {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    visibility: hidden;
+}
+
+.notlistholder {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 20vh;
+    width: 100%;
+}
+
+/* Full-screen warning shown when typing in the wrong keyboard layout */
+#notInGeo {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+#notInGeo h1 {
+    color: white;
+    font-size: 5rem;
+    text-align: center;
+    margin-top: -8vh;
+}
+
+/* =========================================================================
+   END-OF-ROUND MODAL
+   ========================================================================= */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    margin-top: 5%;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    height: 70%;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#scoreRow {
+    text-align: center;
+    font-weight: 600;
+}
+
+/* -------------------------------------------------------------------------
+   "Wins per attempt" bar graph (inside the modal)
+   ------------------------------------------------------------------------- */
+
+/* Axes */
+#oy {
+    margin-top: 20px;
+    width: 5px;
+    height: 200px;
+    background-color: black;
+}
+
+#ox {
+    height: 5px;
+    width: 250px;
+    background-color: black;
+}
+
+/* Bars — one per attempt (1-6), height is set dynamically in script.js
+   based on the win count for that attempt */
+#firstLine {
+    width: 5px;
+    background-color: black;
+    position: absolute;
+    left: 33%;
+}
+
+#secondLine {
+    width: 5px;
+    background-color: black;
+    position: absolute;
+    left: 35%;
+}
+
+#thirdLine {
+    width: 5px;
+    background-color: black;
+    position: absolute;
+    left: 37%;
+}
+
+#fourthLine {
+    width: 5px;
+    background-color: black;
+    position: absolute;
+    left: 39%;
+}
+
+#fifthLine {
+    width: 5px;
+    background-color: black;
+    position: absolute;
+    left: 41%;
+}
+
+#sixthLine {
+    width: 5px;
+    background-color: black;
+    position: absolute;
+    left: 43%;
+}
+
+/* Bar labels (attempt numbers), positioned to line up with the bars above */
+#firstText {
+    position: absolute;
+    left: 33%;
+}
+
+#secondText {
+    position: absolute;
+    left: 35%;
+}
+
+#thirdText {
+    position: absolute;
+    left: 37%;
+}
+
+#fourthText {
+    position: absolute;
+    left: 39%;
+}
+
+#fifthText {
+    position: absolute;
+    left: 41%;
+}
+
+#sixthText {
+    position: absolute;
+    left: 43%;
+}
+
+/* -------------------------------------------------------------------------
+   Modal action buttons
+   ------------------------------------------------------------------------- */
+#resetScore {
+    background: #5E5DF0;
+    border-radius: 999px;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Helvetica, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", system-ui, "Segoe UI", "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    margin: 15% 0 0 35%;
+}
+
+#newGame {
+    background: #5E5DF0;
+    border-radius: 999px;
+    box-shadow: #5E5DF0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: Helvetica, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", system-ui, "Segoe UI", "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    margin: 2% 0 0 39%;
+}
