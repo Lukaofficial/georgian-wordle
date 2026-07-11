@@ -28,9 +28,8 @@ Guess the hidden **5-letter Georgian word** in **6 attempts**. Every guess gives
 
 ```
 
-<img width="833" height="892" alt="Screenshot 2026-07-11 215214" src="screenshot-1" />
-
-<img width="861" height="900" alt="Screenshot 2026-07-11 215321" src="screenshot-2" />
+![Screenshot](screenshot-1.png)
+![Screenshot](screenshot-2.png)
 
 ```
 
