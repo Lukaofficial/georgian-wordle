@@ -28,9 +28,9 @@ Guess the hidden **5-letter Georgian word** in **6 attempts**. Every guess gives
 
 ```
 
-<img width="833" height="892" alt="Screenshot 2026-07-11 215214" src="https://github.com/user-attachments/assets/7332b966-0c9c-4f58-b706-12b5b26d608e" />
+<img width="833" height="892" alt="Screenshot 2026-07-11 215214" src="screenshot-1" />
 
-<img width="861" height="900" alt="Screenshot 2026-07-11 215321" src="https://github.com/user-attachments/assets/ca0b1ea4-a5d2-4f37-8c4e-5825f11a079f" />
+<img width="861" height="900" alt="Screenshot 2026-07-11 215321" src="screenshot-2" />
 
 ```
 
